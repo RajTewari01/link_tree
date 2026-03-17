@@ -1,0 +1,61 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import { loginWithGoogle } from "@/lib/firebase";
+
+export default function ProfileHeader() {
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handlePointerDown = () => {
+    // Start a 1.5s timer for the long press
+    timerRef.current = setTimeout(async () => {
+      console.log("Long press detected, triggering login...");
+      const res = await loginWithGoogle();
+      if (res.success) {
+        // Use window.location instead of next router to force full reload into /admin
+        window.location.href = "/admin";
+      }
+    }, 1500);
+  };
+
+  const clearTimer = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  return (
+    <div className="flex flex-row items-center gap-[18px] mb-[18px]">
+      <div 
+        className="relative w-[96px] h-[96px] rounded-full overflow-hidden shrink-0 cursor-pointer select-none ring-2 ring-transparent hover:ring-white/20 transition-all"
+        onPointerDown={handlePointerDown}
+        onPointerUp={clearTimer}
+        onPointerLeave={clearTimer}
+        onTouchStart={handlePointerDown}
+        onTouchEnd={clearTimer}
+        onContextMenu={(e) => e.preventDefault()} // Prevent context menu on long press
+        title="Long press for admin access"
+      >
+        <Image
+          src="https://github.com/RajTewari01.png"
+          alt="Biswadeep Tewari"
+          width={96}
+          height={96}
+          className="object-cover w-full h-full pointer-events-none"
+          priority
+        />
+      </div>
+      <div className="flex flex-col justify-center text-left">
+        <h1 className="text-[1.5rem] font-semibold text-white tracking-tight leading-tight">
+          Biswadeep Tewari
+        </h1>
+        <p className="text-[#a1a1aa] text-[0.95rem] mt-1 flex items-center gap-1.5 font-medium">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Kolkata, West Bengal, India
+        </p>
+      </div>
+    </div>
+  );
+}
