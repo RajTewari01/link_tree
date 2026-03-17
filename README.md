@@ -31,7 +31,7 @@ graph TD
         Action[Share & Navigation]
     end
 
-    subgraph Server [Next.js Server (RSC & SSR)]
+    subgraph Server ["Next.js Server (RSC and SSR)"]
         Page[page.tsx]
         Components[Server Components]
     end
