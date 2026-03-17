@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="./public/profile.jpeg" alt="Avatar" width="120" style="border-radius: 50%; box-shadow: 0 4px 14px 0 rgba(0,0,0,0.39);" />
   <h1 align="center">Next.js Firebase Link Tree</h1>
   <p align="center">
     <strong>A high-performance, dynamic link aggregator built for speed and aesthetics.</strong>
@@ -10,6 +9,9 @@
     <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-v4-38B2AC?logo=tailwind-css" alt="Tailwind CSS" /></a>
     <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer-Motion-black?logo=framer" alt="Framer Motion" /></a>
   </p>
+
+  <img src="./public/preview-header.png" alt="Header Preview" width="400" style="margin-right: 10px; border-radius: 12px; box-shadow: 0 4px 14px 0 rgba(0,0,0,0.39);" />
+  <img src="./public/preview-links.png" alt="Links Preview" width="400" style="margin-left: 10px; border-radius: 12px; box-shadow: 0 4px 14px 0 rgba(0,0,0,0.39);" />
 </div>
 
 ---
